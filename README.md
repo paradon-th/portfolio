@@ -1,3 +1,9 @@
+# portfolio
+Welcome! This repository contains the code for my personal web development portfolio.  It's designed to showcase my skills and experience in building modern, responsive, and user-friendly web applications. Here, you'll find examples of my work, my technical skills, and a little bit about me.
+
+
+## Introduction
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -35,4 +41,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-# portfolio
+
