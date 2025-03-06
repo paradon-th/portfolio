@@ -31,7 +31,7 @@ const Navbar = () => {
           <a href="#contact"
           className="hidden lg:flex items-center gap-3 px-10 py-2.5 border rounded-full ml-4">
             Contact{" "}
-            <Image src={assets.arrow_icon} className='w-3 alt="arrow_icon"' />
+            <Image src={assets.arrow_icon} className='w-3' alt="" />
           </a>
         </div>
       </nav>
