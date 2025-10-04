@@ -77,7 +77,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             transition={{ duration: 0.6, delay: 1.1 }}
             type="text"
             name="name"
-            className="flex p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-dark-hover/30 dark:border-white/90 dark:text-gray-800"
+            className="flex p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-dark-hover/30 dark:border-white/90"
             placeholder="Enter your name"
             required
           />
@@ -87,7 +87,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             transition={{ duration: 0.6, delay: 1.2 }}
             type="email"
             name="email"
-            className="flex p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-dark-hover/30 dark:border-white/90 dark:text-gray-800"
+            className="flex p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-dark-hover/30 dark:border-white/90"
             placeholder="Enter your email"
             required
           />
@@ -98,7 +98,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
           transition={{ duration: 0.6, delay: 1.3 }}
           rows={6}
           name="message"
-          className="w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6 dark:bg-dark-hover/30 dark:border-white/90 dark:text-gray-800"
+          className="w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6 dark:bg-dark-hover/30 dark:border-white/90"
           placeholder="Enter your message"
           required
         ></motion.textarea>
