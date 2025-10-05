@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { assets } from "@/assets/assets";
 interface NavbarProps {
   isDarkMode: boolean;
-  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean | null>>;
 }
 
 const Navbar: React.FC<NavbarProps> = ({isDarkMode, setIsDarkMode}) => {
@@ -20,16 +20,21 @@ const Navbar: React.FC<NavbarProps> = ({isDarkMode, setIsDarkMode}) => {
   };
   const [isScroll, setIsScroll] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (scrollY > 50){
-        setIsScroll(true)
-      }else{
-        setIsScroll(false)
-      }
-  })
-  },[]
-)
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsScroll(true);
+    } else {
+      setIsScroll(false);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll); // cleanup
+  };
+}, []);
 
 
   return (

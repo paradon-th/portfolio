@@ -9,35 +9,38 @@ import Footer from "./components/footer";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean | null>(null);
 
-  useEffect(()=>{
-    if(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
-      setIsDarkMode(true)
-    }else{
-      setIsDarkMode(false)
-    }
-  },[])
+  useEffect(() => {
+    const dark =
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDarkMode(dark);
+  }, []);
 
-  useEffect(()=>{
-    if(isDarkMode){
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-    }else{
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = '';
+  useEffect(() => {
+    if (isDarkMode === null) return; // รอจน client render
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "";
     }
-  },[isDarkMode])
+  }, [isDarkMode]);
+
+  if (isDarkMode === null) return null;
 
   return (
     <>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
-      <Header isDarkMode={isDarkMode}/>
-      <About isDarkMode={isDarkMode}/>
-      <Services isDarkMode={isDarkMode}/>
-      <Work isDarkMode={isDarkMode}/>
-      <Contact isDarkMode={isDarkMode}/>
-      <Footer isDarkMode={isDarkMode}/>
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header isDarkMode={isDarkMode} />
+      <About isDarkMode={isDarkMode} />
+      <Services isDarkMode={isDarkMode} />
+      <Work isDarkMode={isDarkMode} />
+      <Contact isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 }
