@@ -8,24 +8,25 @@ interface WorkProps {
 }
 const Work: React.FC<WorkProps> = ({ isDarkMode }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+    <section
       id="work"
+      aria-labelledby="work-heading"
       className="w-full px-[12%] py-10 scroll-mt-20"
     >
-      <motion.h4
+      <motion.p
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         className="text-center mb-2 text-lg"
       >
         My portfolio
-      </motion.h4>
+      </motion.p>
       <motion.h2
+        id="work-heading"
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         className="text-center text-5xl"
       >
@@ -34,22 +35,24 @@ const Work: React.FC<WorkProps> = ({ isDarkMode }) => {
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
         className="text-center max-w-2xl mx-auto mt-5 mb-12"
       >
         Welcome to my web development portfolio! Here are some of the latest
-        projects I’ve worked on, showcasing my skills in frontend, backend, and
-        full-stack development.
+        projects I&apos;ve worked on, showcasing my skills in frontend,
+        backend, and full-stack development.
       </motion.p>
 
-      <motion.div
+      <motion.ul
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className="grid grid-cols-auto my-10 gap-5 dark:text-black"
+        className="grid grid-cols-auto my-10 gap-5 dark:text-black list-none p-0"
       >
         {workData.map((projects, index) => (
-          <motion.div
+          <motion.li
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
             key={index}
@@ -58,33 +61,39 @@ const Work: React.FC<WorkProps> = ({ isDarkMode }) => {
           >
             <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
               <div>
-                <h2 className="font-semibold">{projects.title}</h2>
+                <h3 className="font-semibold">{projects.title}</h3>
                 <p className="text-sm text-gray-700">{projects.description}</p>
               </div>
               <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                <Image src={assets.send_icon} alt="" className="w-5" />
+                <Image
+                  src={assets.send_icon}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-5"
+                />
               </div>
             </div>
-          </motion.div>
+          </motion.li>
         ))}
-      </motion.div>
-      <motion.a
+      </motion.ul>
+      <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5, delay: 1.1 }}
-        href=""
-        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-light-hover duration-500 dark:text-white dark:border-white dark:hover:bg-dark-hover"
+        className="text-center text-gray-600 dark:text-white/70 my-12 italic"
       >
-        Show more{" "}
+        More projects currently in the works — check back soon{" "}
         <Image
           src={
             isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold
           }
           alt=""
-          className="w-4"
+          aria-hidden="true"
+          className="w-4 inline-block ml-1"
         />
-      </motion.a>
-    </motion.div>
+      </motion.p>
+    </section>
   );
 };
 
