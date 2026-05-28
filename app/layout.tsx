@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
+import StructuredData from "./components/structured-data";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -16,9 +17,9 @@ const ovo = Ovo({
 
 const SITE_URL = "https://portfolio.paradon.work";
 const SITE_NAME = "Paradon Thonthong";
-const TITLE = "Paradon Thonthong — Full Stack Developer";
+const TITLE = "Paradon Thonthong — Full Stack Developer Portfolio";
 const DESCRIPTION =
-  "Full Stack Developer specializing in Angular, Spring Boot, Next.js and MySQL — building scalable web applications and intuitive user experiences.";
+  "Paradon Thonthong (พรดล ทอนทอง) — Full Stack Developer from Thailand specializing in Next.js, Angular, Spring Boot and MySQL. View projects, services and get in touch.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -27,17 +28,34 @@ export const metadata: Metadata = {
     template: "%s — Paradon Thonthong",
   },
   description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
   keywords: [
     "Paradon Thonthong",
+    "ภราดร ทนทอง",
+    "Paradon",
     "Full Stack Developer",
-    "Web Developer",
-    "Next.js",
-    "Angular",
-    "Spring Boot",
+    "Web Developer Thailand",
+    "Next.js Developer",
+    "Angular Developer",
+    "Spring Boot Developer",
     "MySQL",
+    "TypeScript",
     "Portfolio",
-    "Thailand",
+    "Thailand Developer",
+    "Hire Full Stack Developer",
   ],
+  category: "technology",
+  // Drop your verification codes here after registering on each platform.
+  // Google Search Console: https://search.google.com/search-console
+  // Bing Webmaster Tools: https://www.bing.com/webmasters
+  verification: {
+    google: "REPLACE_WITH_GOOGLE_VERIFICATION_CODE",
+    other: {
+      "msvalidate.01": "REPLACE_WITH_BING_VERIFICATION_CODE",
+    },
+  },
   authors: [{ name: "Paradon Thonthong", url: SITE_URL }],
   creator: "Paradon Thonthong",
   alternates: {
@@ -70,7 +88,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {
@@ -102,6 +122,13 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <StructuredData />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${outfit.variable} ${ovo.variable} antialiased leading-8 overflow-x-hidden dark:bg-dark-theme dark:text-white`}
