@@ -9,38 +9,45 @@ import Footer from "./components/footer";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean | null>(null);
+  // Initialize synchronously so the first paint matches the persisted theme
+  // and we avoid a flash-of-empty-page on load.
+  const [isDarkMode, setIsDarkMode] = useState<boolean | null>(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      const stored = localStorage.getItem("theme");
+      if (stored === "dark") return true;
+      if (stored === "light") return false;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
-    const dark =
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setIsDarkMode(dark);
-  }, []);
-
-  useEffect(() => {
-    if (isDarkMode === null) return; // รอจน client render
+    if (isDarkMode === null) return;
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      localStorage.theme = "";
+      localStorage.setItem("theme", "light");
     }
   }, [isDarkMode]);
 
-  if (isDarkMode === null) return null;
-
   return (
     <>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Header isDarkMode={isDarkMode} />
-      <About isDarkMode={isDarkMode} />
-      <Services isDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
-      <Contact isDarkMode={isDarkMode} />
-      <Footer isDarkMode={isDarkMode} />
+      <Navbar
+        isDarkMode={isDarkMode ?? false}
+        setIsDarkMode={setIsDarkMode}
+      />
+      <main>
+        <Header />
+        <About isDarkMode={isDarkMode ?? false} />
+        <Services />
+        <Work isDarkMode={isDarkMode ?? false} />
+        <Contact />
+      </main>
+      <Footer isDarkMode={isDarkMode ?? false} />
     </>
   );
 }

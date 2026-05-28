@@ -77,22 +77,7 @@ export const assets = {
 export const workData = [
     {
         title: 'iDorm',
-        description: 'is coming',
-        bgImage: '/10559685.png',
-    },
-    {
-        title: 'is coming',
-        description: 'is coming',
-        bgImage: '/10559685.png',
-    },
-    {
-        title: 'is coming',
-        description: 'is coming',
-        bgImage: '/10559685.png',
-    },
-    {
-        title: 'is coming',
-        description: 'is coming',
+        description: 'Dormitory management web app — work in progress',
         bgImage: '/10559685.png',
     },
 ]

@@ -8,24 +8,25 @@ interface AboutProps {
 }
 const About: React.FC<AboutProps> = ({ isDarkMode }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
+    <section
       id="about"
+      aria-labelledby="about-heading"
       className="w-full px-[12%] py-10 scroll-mt-20"
     >
-      <motion.h4
+      <motion.p
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         className="text-center mb-2 text-xl"
       >
         Introduction
-      </motion.h4>
+      </motion.p>
       <motion.h2
+        id="about-heading"
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         className="text-center text-5xl"
       >
@@ -35,32 +36,40 @@ const About: React.FC<AboutProps> = ({ isDarkMode }) => {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8 }}
         className="flex w-full flex-col lg:flex-row items-center gap-20 my-20"
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
           className="w-64 sm:w-80 rounded-3xl max-w-none"
         >
-          <Image src={assets.user} alt="" className="w-full rounded-3xl" />
+          <Image
+            src={assets.user}
+            alt="Paradon Thonthong portrait"
+            className="w-full rounded-3xl"
+          />
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex-1"
         >
           <p className="mb-10 max-w-2xl">
-            I'm a Full Stack Developer specializing in building web applications
-            using Angular, Spring Boot, and MySQL. I enjoy creating seamless
-            user experiences and developing efficient backend systems to support
-            scalable applications.
+            I&apos;m a Full Stack Developer specializing in building web
+            applications using Angular, Spring Boot, and MySQL. I enjoy creating
+            seamless user experiences and developing efficient backend systems
+            to support scalable applications.
           </p>
           <motion.ul
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
           >
@@ -72,7 +81,8 @@ const About: React.FC<AboutProps> = ({ isDarkMode }) => {
               >
                 <Image
                   src={isDarkMode ? iconDark : icon}
-                  alt={title}
+                  alt=""
+                  aria-hidden="true"
                   className="w-7 mt-3"
                 />
                 <h3 className="text-xl my-4 text-gray-700 dark:text-white">
@@ -84,20 +94,22 @@ const About: React.FC<AboutProps> = ({ isDarkMode }) => {
               </motion.li>
             ))}
           </motion.ul>
-          <motion.h4
+          <motion.p
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, delay: 1.3 }}
-            className="my-6 text-gray-700 dark:text-white"
+            className="my-6 text-gray-700 dark:text-white font-medium"
           >
-            {" "}
             Tools I use
-          </motion.h4>
+          </motion.p>
           <motion.ul
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 1.5 }}
             className="flex items-center gap-3 sm:gap-5"
+            aria-label="Tools I use"
           >
             {toolsData.map((tool, index) => (
               <motion.li
@@ -105,13 +117,18 @@ const About: React.FC<AboutProps> = ({ isDarkMode }) => {
                 key={index}
                 className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-full cursor-pointer hover:-translate-y-3 duration-500"
               >
-                <Image src={tool} alt="tool" className="w-5 sm:w-7" />
+                <Image
+                  src={tool}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-5 sm:w-7"
+                />
               </motion.li>
             ))}
           </motion.ul>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </section>
   );
 };
 
